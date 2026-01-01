@@ -1,236 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="title" content="sylas.works">
-<meta name="description" content="Personal portfolio site showcasing my projects and work, with a focus on UI/UX design and Fullstack web development. Explore creative experiments, Discord bots, and web applications built with HTML, CSS, TailwindCSS, C#, and Next.js. Discover my passion for coding, design, and continuous learning through hands-on projects.">
-<meta name="keywords" content="sylas.works, sylas, works, portfolio, personal projects, Discord bot, web development, TailwindCSS, HTML, CSS, C#, Next.js, Apple portfolio, GitHub">
-<meta name="author" content="Sylas">
-<meta name="robots" content="index, follow">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="language" content="English">
-<meta name="theme-color" content="#fffffa">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="distribution" content="global">
-<meta name="rating" content="general">
-<meta name="revisit-after" content="7 days">
-<meta name="coverage" content="Worldwide">
-<meta name="resource-type" content="Document">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sylas – 16-year-old developer crafting high-end digital experiences through code, systems, and design. Obsessed with polish, motion, and Apple-level product quality.">
+  <meta name="keywords" content="Sylas, sylas.works, web developer, full-stack developer, UI/UX designer, systems developer, performance optimization, modern web development, young developer, portfolio, school, math, science">
+  <meta name="author" content="Sylas">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="googlebot" content="index, follow">
+  <meta name="rating" content="general">
+  <meta property="og:title" content="sylas.works">
+  <meta property="og:description" content="Crafting high-end digital experiences through code, systems, and design. A 16-year-old developer focused on polish, performance, and modern interfaces.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sylas.works">
+  <meta property="og:image" content="https://sylas.works/sylaspfp.png">
+  <meta property="og:image:alt" content="Sylas Profile Picture">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:site_name" content="sylas.works">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="sylas.works">
+  <meta name="twitter:description" content="Crafting high-end digital experiences through code, systems, and design. A 16-year-old developer focused on polish, performance, and modern interfaces.">
+  <meta name="twitter:image" content="https://sylas.works/sylaspfp.png">
+  <meta name="twitter:image:alt" content="Sylas Profile Picture">
+  <meta name="twitter:creator" content="@sylas">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://sylas.works">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="sylaspfp.png">
+  <title>sylas.works | High-End Digital Experiences by Sylas</title>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="sylas.works">
-<meta property="og:description" content="Personal portfolio showcasing UI/UX and Fullstack web development projects, Discord bots, and web applications built with HTML, CSS, TailwindCSS, C#, and Next.js.">
-<meta property="og:image" content="https://raw.githubusercontent.com/sylas-dev/portfolio-site/refs/heads/main/img.png">
-<meta property="og:url" content="https://sylas.works">
-<meta property="og:site_name" content="sylas.works">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #ffffff;
+      overflow-x: hidden;
+      overscroll-behavior-x: none;
+      overscroll-behavior-y: none;
+      scroll-behavior: auto;
+    }
+    body::-webkit-scrollbar { width: 10px; }
+    body::-webkit-scrollbar-thumb { background: #000; border-radius: 999px; }
 
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="sylas.works">
-<meta property="twitter:description" content="Check out my personal portfolio featuring UI/UX design, Fullstack web development projects, Discord bots, and creative coding experiments.">
-<meta property="twitter:image" content="https://raw.githubusercontent.com/sylas-dev/portfolio-site/refs/heads/main/img.png">
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 24px; height: 24px;
+      background: rgba(0,0,0,.8);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease-out;
+      z-index: 9999;
+    }
+    @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sylas.works</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" rel="stylesheet">
+    #particles { position: fixed; inset: 0; z-index: -1; }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px) rotateX(var(--rx)) rotateY(var(--ry));
+      box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .current-year {
+      color: #22c55e !important;
+    }
+
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+
+    .glow {
+      box-shadow: 0 0 60px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
-<body class="font-['Inter'] bg-gradient-to-b from-white to-gray-300 overflow-x-hidden">
-    <div id="preloader" class="fixed inset-0 bg-white z-50 flex items-center justify-center transition-opacity duration-1000">
-        <div class="relative w-[120px] h-[120px] mx-auto scale-120 animate-[float_3s_ease-in-out_infinite]">
-            <div class="absolute w-full h-full border-2 border-transparent border-t-black/10 rounded-full animate-[spin_1.5s_cubic-bezier(0.5,0,0.5,1)_infinite]" style="animation-delay: -0.2s; border-top-color: rgba(0, 0, 0, 0.8);"></div>
-            <div class="absolute w-[80%] h-[80%] top-[10%] left-[10%] border-2 border-transparent border-t-black/10 rounded-full animate-[spin_1.5s_cubic-bezier(0.5,0,0.5,1)_infinite]" style="animation-delay: -0.4s; border-top-color: rgba(0, 0, 0, 0.6);"></div>
-            <div class="absolute w-[60%] h-[60%] top-[20%] left-[20%] border-2 border-transparent border-t-black/10 rounded-full animate-[spin_1.5s_cubic-bezier(0.5,0,0.5,1)_infinite]" style="animation-delay: -0.6s; border-top-color: rgba(0, 0, 0, 0.4);"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-black rounded-full z-10"></div>
-        </div>
+<body>
+
+  <canvas id="particles"></canvas>
+  <div class="cursor" id="cursor"></div>
+
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
+    <img src="sylaspfp.png" class="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full mb-8 glow object-cover" alt="Sylas – Developer Profile Picture">
+    <h1 class="text-5xl sm:text-7xl md:text-9xl font-black tracking-tight select-none">sylas.works</h1>
+    <p class="text-base sm:text-xl md:text-2xl text-neutral-600 max-w-xl sm:max-w-2xl mb-12 mt-6">
+      Crafting high-end digital experiences through code, systems, and design.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+      <a href="#timeline" class="px-8 py-3 sm:px-10 sm:py-4 rounded-full bg-black text-white text-lg font-semibold button-hover w-full sm:w-auto">Timeline</a>
+      <a href="#bio" class="px-8 py-3 sm:px-10 sm:py-4 rounded-full border-2 border-black text-lg font-semibold button-hover w-full sm:w-auto">Bio</a>
     </div>
-
-    <section class="min-h-screen flex flex-col items-center justify-center px-4 text-center bg-transparent relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="absolute inset-0 -z-10 rounded-full opacity-30" style="filter: blur(80px); background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 70%);"></div>
-            <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-black mb-6 opacity-0 transform translate-y-10 transition-all duration-1000" id="main-heading">
-                <span class="drop-shadow-[0_4px_8px_rgba(0,0,0,0.1)]">sylas.works</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-600 font-light mb-12 opacity-0 transform translate-y-10 transition-all duration-1000 delay-200" id="subtitle">
-                Crafting digital experiences through code and design
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 opacity-0 transform translate-y-10 transition-all duration-1000 delay-400" id="buttons">
-                <button id="work-btn" class="group relative px-8 py-4 bg-black text-white font-medium rounded-full overflow-hidden transition-all duration-300 hover:bg-opacity-90 transform hover:-translate-y-1 focus:outline-none">
-                    <span>View My Work</span>
-                    <span class="ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-                </button>
-                <a href="https://github.com/sylas-dev" target="_blank" rel="noopener noreferrer" class="group relative px-8 py-4 border-2 border-black text-black font-medium rounded-full overflow-hidden transition-all duration-300 hover:bg-black hover:text-white transform hover:-translate-y-1">
-                    <span>Get In Touch</span>
-                    <span class="ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300">↗</span>
-                </a>
-            </div>
-            </div>
-        </div>
-        
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-0 transition-opacity duration-1000 delay-1000" id="scroll-indicator">
-            <span class="text-sm text-gray-600 mb-2 font-medium">Scroll to explore</span>
-            <div class="w-[1px] h-12 bg-gradient-to-b from-gray-600 to-transparent"></div>
-        </div>
-    </section>
-
-    <div id="notification" class="fixed top-0 right-0 m-6 bg-white rounded-lg shadow-lg transform -translate-y-full opacity-0 transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] z-50 border-l-4 border-yellow-400 overflow-hidden" style="will-change: transform, opacity;">
-        <div class="relative">
-            <div class="flex items-center p-4">
-                <div class="flex-shrink-0">
-                    <svg class="h-6 w-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="ml-3">
-                    <p class="text-sm font-medium text-gray-900">Site Under Construction</p>
-                    <p class="text-sm text-gray-500">This section is still in development. Check back soon!</p>
-                </div>
-                <button id="close-notification" class="ml-4 text-gray-400 hover:text-gray-500 focus:outline-none">
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div id="timer-bar" class="h-1 bg-gray-200 w-full">
-                <div class="h-full bg-yellow-400 transition-all duration-5000 ease-linear"></div>
-            </div>
-        </div>
+    <div class="absolute bottom-6 sm:bottom-12 flex flex-col items-center text-neutral-500 animate-bounce">
+      <span class="text-sm mb-1 sm:mb-2">Scroll</span>
+      <div class="w-px h-10 sm:h-12 bg-gradient-to-b from-black to-transparent"></div>
     </div>
+  </section>
 
-    <script>
-        const n = document.getElementById('notification');
-        const b = document.getElementById('close-notification');
-        const t = document.querySelector('#timer-bar > div');
-        let nt;
+  <section id="bio" class="py-28 sm:py-40 px-6 flex justify-center">
+    <div class="max-w-4xl text-center fade">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 sm:mb-10">Bio</h2>
+      <p class="text-neutral-600 text-base sm:text-xl leading-relaxed">
+        I'm a <span id="age"></span> year old developer focused on modern systems, clean interfaces, and performance-driven architecture. I obsess over polish, motion, and clarity — drawing inspiration from Apple-level product design.
+      </p>
+    </div>
+  </section>
 
-        function sn() {
-            n.style.transform = 'translateY(0)';
-            n.style.opacity = '1';
-            
-            t.style.transition = 'none';
-            t.style.width = '100%';
-            
-            void t.offsetWidth;
-            
-            t.style.transition = 'width 5s linear';
-            setTimeout(() => {
-                t.style.width = '0%';
-            }, 10);
-            
-            clearTimeout(nt);
-            nt = setTimeout(hn, 5000);
+  <section class="py-28 sm:py-40 px-6 flex justify-center">
+    <div class="max-w-4xl w-full fade text-center">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 sm:mb-10">Playlist</h2>
+      <p class="text-neutral-600 text-base sm:text-xl mb-8 sm:mb-16">
+        Music I build and focus to.
+      </p>
+      <div class="bg-white rounded-[2.5rem] glow overflow-hidden mx-auto max-w-3xl transform transition hover:scale-105 card-hover">
+        <iframe src="https://open.spotify.com/embed/playlist/5z6O1YAmwp7khUXwMlL5Gm?utm_source=generator&theme=0" width="100%" height="380" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" class="rounded-[2.5rem]"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline" class="py-28 sm:py-40 px-6">
+    <h2 class="text-center text-4xl sm:text-5xl md:text-6xl font-extrabold mb-16">Timeline</h2>
+    <div id="timelineContainer" class="timeline-container"></div>
+  </section>
+
+  <footer class="py-16 px-6 border-t border-neutral-200">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-neutral-500 text-sm">
+        © <span id="year"></span> sylas.works — Built with care and precision.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const timelineData = [
+      { year: "2019", title: "Early Foundations", desc: "Began my development journey with Unity and Discord bots." },
+      { year: "2020", title: "Scale & Security", desc: "Focused on secure Discord bots scaling to 200k+ users." },
+      { year: "2021", title: "Web Systems", desc: "Built dashboards, APIs, and backend systems." },
+      { year: "2022", title: "Professional Focus", desc: "Shipped projects, strengthened Python and system design." },
+      { year: "2023", title: "Creator Platforms", desc: "Built tooling for Kick.com creators." },
+      { year: "2024", title: "UX & Performance", desc: "Optimized UX, performance, and clean interfaces." },
+      { year: "2025", title: "Ecosystem Projects", desc: "Developed FiveM frameworks and Minecraft plugins." },
+      { year: "2026", title: "Product & Revenue", desc: "Focused on full-scale products and revenue models.", current: true }
+    ];
+
+    const container = document.getElementById("timelineContainer");
+    timelineData.forEach((d, i) => {
+      const el = document.createElement("div");
+      el.className = "fade card-hover flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center p-6 rounded-xl bg-white shadow-md";
+      el.style.setProperty('--rx', '0deg');
+      el.style.setProperty('--ry', '0deg');
+      el.innerHTML = `
+        <div class="text-2xl sm:text-3xl font-black w-24 sm:w-28 text-neutral-400 ${d.current ? 'current-year' : ''}">${d.year}</div>
+        <div class="flex-1">
+          <h3 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">${d.title}</h3>
+          <p class="text-neutral-600 text-base sm:text-lg">${d.desc}</p>
+        </div>`;
+      container.appendChild(el);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("show");
+          observer.unobserve(e.target);
         }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
-        function hn() {
-            n.style.transform = 'translateY(calc(-100% - 2rem))';
-            n.style.opacity = '0';
-            clearTimeout(nt);
-        }
+    window.addEventListener("scroll", () => {
+      document.querySelectorAll("#timelineContainer > div").forEach((el, i) => {
+        const offset = window.scrollY * 0.05 * (i % 2 === 0 ? 1 : -1);
+        el.style.transform = `translateY(0px) translateX(${offset}px) rotateX(${el.dataset.rx || 0}) rotateY(${el.dataset.ry || 0})`;
+      });
+    });
 
-        document.getElementById('work-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            sn();
-        });
+    document.querySelectorAll(".card-hover").forEach(card => {
+      card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rx = -(y - rect.height / 2) / 20;
+        const ry = (x - rect.width / 2) / 20;
+        card.style.setProperty('--rx', rx + 'deg');
+        card.style.setProperty('--ry', ry + 'deg');
+        card.style.transform = `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        card.dataset.rx = rx;
+        card.dataset.ry = ry;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+        card.style.transform = `translateY(0px) rotateX(0deg) rotateY(0deg)`;
+      });
+    });
 
-        b.addEventListener('click', hn);
-        n.addEventListener('click', function(e) {
-            if (e.target === this) {
-                hn();
-            }
-        });
-    </script>
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const workBtn = document.getElementById('work-btn');
-            const notification = document.getElementById('notification');
-            const closeBtn = document.getElementById('close-notification');
-            let timeoutId;
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let w, h, p = [];
+    function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
+    window.addEventListener("resize", resize);
+    resize();
+    for (let i = 0; i < 120; i++) {
+      p.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 2 + 1,
+        vx: (Math.random() - .5) * .25,
+        vy: (Math.random() - .5) * .25
+      });
+    }
+    function loop() {
+      ctx.clearRect(0, 0, w, h);
+      p.forEach(a => {
+        a.x += a.vx; a.y += a.vy;
+        if (a.x < 0 || a.x > w) a.vx *= -1;
+        if (a.y < 0 || a.y > h) a.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0,0,0,.12)";
+        ctx.fill();
+      });
+      requestAnimationFrame(loop);
+    }
+    loop();
 
-            function showNotification() {
-                if (timeoutId) clearTimeout(timeoutId);
-                
-                notification.classList.remove('-translate-y-full');
-                notification.classList.add('translate-y-0');
-                
-                timeoutId = setTimeout(() => {
-                    hideNotification();
-                }, 5000);
-            }
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-            function hideNotification() {
-                notification.classList.remove('translate-y-0');
-                notification.classList.add('-translate-y-full');
-            }
+    const birthDate = new Date('2009-11-27');
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    document.getElementById("age").textContent = age;
 
-            workBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                showNotification();
-            });
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false
+    });
 
-            closeBtn.addEventListener('click', hideNotification);
-            
-            notification.addEventListener('click', (e) => {
-                if (e.target === notification) hideNotification();
-            });
-        });
-    </script>
-
-    <style>
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1.2); }
-            50% { transform: translateY(-5px) scale(1.2); }
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-    </style>
-
-    <script>
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            const heading = document.getElementById('main-heading');
-            const subtitle = document.getElementById('subtitle');
-            const buttons = document.getElementById('buttons');
-            const scrollIndicator = document.getElementById('scroll-indicator');
-            
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.pointerEvents = 'none';
-                
-                setTimeout(() => {
-                    heading.classList.remove('opacity-0', 'translate-y-10');
-                    subtitle.classList.remove('opacity-0', 'translate-y-10');
-                    buttons.classList.remove('opacity-0', 'translate-y-10');
-                    scrollIndicator.classList.remove('opacity-0');
-                }, 500);
-            }, 1000);
-            
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        });
-    </script>
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  </script>
 </body>
 </html>
